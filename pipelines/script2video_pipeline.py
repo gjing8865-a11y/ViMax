@@ -16,12 +16,6 @@ from utils.provider_presets import resolve_chat_model_config
 
 class Script2VideoPipeline:
 
-    # events
-    character_portrait_events = {}
-    shot_desc_events = {}
-    frame_events = {}
-
-
     def __init__(
         self,
         chat_model: str,
@@ -39,6 +33,10 @@ class Script2VideoPipeline:
         self.storyboard_artist = StoryboardArtist(chat_model=self.chat_model)
         self.camera_image_generator = CameraImageGenerator(chat_model=self.chat_model, image_generator=self.image_generator, video_generator=self.video_generator)
         self.reference_image_selector = ReferenceImageSelector(chat_model=self.chat_model)
+
+        self.character_portrait_events = dict()
+        self.shot_desc_events = dict()
+        self.frame_events = dict()
 
         self.working_dir = working_dir
         os.makedirs(self.working_dir, exist_ok=True)
