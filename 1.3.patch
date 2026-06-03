@@ -1,0 +1,28 @@
+diff --git a/pipelines/script2video_pipeline.py b/pipelines/script2video_pipeline.py
+index 590f97b..69324dd 100644
+--- a/pipelines/script2video_pipeline.py
++++ b/pipelines/script2video_pipeline.py
+@@ -16,12 +16,6 @@ from utils.provider_presets import resolve_chat_model_config
+ 
+ class Script2VideoPipeline:
+ 
+-    # events
+-    character_portrait_events = {}
+-    shot_desc_events = {}
+-    frame_events = {}
+-
+-
+     def __init__(
+         self,
+         chat_model: str,
+@@ -34,6 +28,10 @@ class Script2VideoPipeline:
+         self.image_generator = image_generator
+         self.video_generator = video_generator
+ 
++        self.character_portrait_events = {}
++        self.shot_desc_events = {}
++        self.frame_events = {}
++
+         self.character_extractor = CharacterExtractor(chat_model=self.chat_model)
+         self.character_portraits_generator = CharacterPortraitsGenerator(image_generator=self.image_generator)
+         self.storyboard_artist = StoryboardArtist(chat_model=self.chat_model)
